@@ -25,6 +25,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -79,6 +80,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainActivity(navController: NavController) {
+    val context = LocalContext.current // Get the context for dynamic resource lookup
     val categories = listOf("Historic", "Parks", "Museums", "Touristic")
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item{
@@ -102,8 +104,14 @@ fun MainActivity(navController: NavController) {
                 elevation = CardDefaults.elevatedCardElevation(8.dp)
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
+                    val imageResId = context.resources.getIdentifier(
+                        category.lowercase(), // Name of the drawable file (without "R.drawable.")
+                        "drawable", // Resource type
+                        context.packageName
+                    )
                     Image(
-                        painter = painterResource(id = R.drawable.landmark), // Placeholder
+                        //painter = painterResource(id = R.drawable.$category), // Placeholder
+                        painter = painterResource(id = imageResId), // Placeholder
                         contentDescription = null,
                         modifier = Modifier.size(100.dp)
                     )

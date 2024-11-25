@@ -61,11 +61,27 @@ data class Landmark(val name: String, val address: String, val latLng: LatLng)
 fun NhuActivity(navController: NavController, category: String?) {
     val landmarks = when (category) {
         "Historic" -> listOf(
+            Landmark("Casa Loma", "1 Austin Terrace", LatLng(43.6781, -79.4094)),
             Landmark("Royal Ontario Museum", "100 Queens Park", LatLng(43.6677, -79.3948)),
-            Landmark("Art Gallery of Ontario", "317 Dundas St W", LatLng(43.6536, -79.3925))
+            Landmark("Richmond Hill Heritage Centre", "19 Church St N", LatLng(43.9143, -79.4393)),
+            Landmark("Toronto Old City Hall", "60 Queen St W", LatLng(43.6526, -79.3817))
         )
         "Parks" -> listOf(
+            Landmark("Harbour Square Park", "25 Queens Quay W", LatLng(43.6463, -79.3782)),
             Landmark("High Park", "1873 Bloor St W", LatLng(43.6465, -79.4637)),
+            Landmark("Tommy Thompson Park", "1 Leslie St", LatLng(43.6393, -79.3271)),
+            Landmark("Trinity Bellwoods Park", "790 Queen St W", LatLng(43.6469, -79.4175))
+        )
+
+        "Museums" -> listOf(
+            Landmark("Art Gallery of Ontario", "317 Dundas St W", LatLng(43.6536, -79.3925)),
+            Landmark("iArtS Museum", "580 King St W 2nd Floor", LatLng(43.6450, -79.3993)),
+            Landmark("Museum of Toronto", "401 Richmond St W", LatLng(43.6486, -79.3940)),
+            Landmark("Nature Museum", "168 Hamilton St", LatLng(43.7046, -79.3640))
+        )
+
+        "Touristic" -> listOf(
+            Landmark("Toronto Skyline View", "Ferry Dock", LatLng(43.6321, -79.3576)),
             Landmark("Trinity Bellwoods Park", "790 Queen St W", LatLng(43.6469, -79.4175))
         )
         else -> emptyList()
