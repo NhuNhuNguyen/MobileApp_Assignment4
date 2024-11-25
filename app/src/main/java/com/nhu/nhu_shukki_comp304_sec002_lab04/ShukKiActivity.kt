@@ -16,6 +16,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -25,6 +31,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 
 //@Composable
 //fun ShukKiActivity(itemName: String) {
@@ -63,15 +71,40 @@ import androidx.compose.runtime.remember
 //}
 
 @Composable
-fun ShukKiActivity(itemName: String, latitude: Double, longitude: Double) {
+fun ShukKiActivity(navController: NavController, itemName: String, latitude: Double, longitude: Double) {
     val mapView = rememberMapViewWithLifecycle()
 
     Column(modifier = Modifier.fillMaxSize()) {
-        Text(
-            text = itemName,
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(16.dp)
-        )
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start
+
+        ){
+            IconButton(
+                onClick = {
+                    navController.navigateUp() // Navigate back to the previous screen
+                },
+                modifier = Modifier.size(48.dp),
+                content = {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back"
+//                        tint = if (isFavorite) Color.Red else Color.Gray // Set the icon color to red
+                    )
+                }
+            )
+
+            Text(
+                text = itemName,
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(16.dp)
+            )
+
+        }
+
         AndroidView(
             factory = { mapView },
             modifier = Modifier.fillMaxSize()

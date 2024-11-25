@@ -116,7 +116,7 @@ fun AppNavigation() {
             val name = backStackEntry.arguments?.getString("name") ?: ""
             val lat = backStackEntry.arguments?.getString("lat")?.toDouble() ?: 0.0
             val lng = backStackEntry.arguments?.getString("lng")?.toDouble() ?: 0.0
-            ShukKiActivity(name, lat, lng)
+            ShukKiActivity(navController, name, lat, lng)
         }
     }
 }
