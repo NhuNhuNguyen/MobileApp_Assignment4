@@ -18,8 +18,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 
 //@Composable
@@ -65,11 +71,47 @@ fun NhuActivity(navController: NavController, category: String?) {
         else -> emptyList()
     }
 
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(8.dp)
     ) {
+        item{
+            Row(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Start
+
+            ){
+                IconButton(
+                    onClick = {
+                        navController.navigateUp() // Navigate back to the previous screen
+                    },
+                    modifier = Modifier.size(48.dp),
+                    content = {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Back"
+//                        tint = if (isFavorite) Color.Red else Color.Gray // Set the icon color to red
+                        )
+                    }
+                )
+                Text(
+                    text = "${category}",
+                    style = MaterialTheme.typography.displayMedium.copy(
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    color = Color(0xFF3A3A3A),
+                    modifier = Modifier
+                        .padding(vertical = 15.dp, horizontal = 8.dp)
+//                    .clickable { showCard = true }
+                )}
+            }
+
         items(landmarks) { landmark ->
             Card(
                 modifier = Modifier

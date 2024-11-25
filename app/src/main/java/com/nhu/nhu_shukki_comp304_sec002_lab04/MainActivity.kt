@@ -24,8 +24,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.nhu.nhu_shukki_comp304_sec002_lab04.ui.theme.Nhu_ShukKi_COMP304_Sec002_Lab04Theme
 
 class MainActivity : ComponentActivity() {
@@ -78,6 +81,18 @@ class MainActivity : ComponentActivity() {
 fun MainActivity(navController: NavController) {
     val categories = listOf("Historic", "Parks", "Museums", "Touristic")
     LazyColumn(modifier = Modifier.fillMaxSize()) {
+        item{
+            Text(
+                text = "Toronto Landmark Locator",
+                style = MaterialTheme.typography.displayMedium.copy(
+                    fontSize = 36.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                color = Color(0xFF3A3A3A),
+                modifier = Modifier
+                    .padding(vertical = 24.dp, horizontal = 8.dp)
+//                    .clickable { showCard = true }
+            )}
         items(categories) { category ->
             Card(
                 modifier = Modifier
