@@ -18,19 +18,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nhu.nhu_shukki_comp304_sec002_lab04.ui.theme.Nhu_ShukKi_COMP304_Sec002_Lab04Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,44 +37,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//@Composable
-//fun MainActivity(navController: NavController) {
-//    val categories = listOf("Historic", "Parks", "Museums", "Touristic Spots")
-//    LazyColumn(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-//        items(categories) { category ->
-//            Card(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(vertical = 8.dp)
-//                    .clickable { navController.navigate("second_screen/$category") }
-//            ) {
-//                Text(
-//                    text = category,
-//                    style = MaterialTheme.typography.titleMedium,
-//                    modifier = Modifier.padding(16.dp)
-//                )
-//            }
-//        }
-//    }
-//}
-
-//@Composable
-//fun AppNavigation() {
-//    val navController = rememberNavController()
-//    NavHost(navController = navController, startDestination = "main_screen") {
-//        composable("main_screen") { MainActivity(navController) }
-//        composable("second_screen/{category}") { backStackEntry ->
-//            NhuActivity(navController, backStackEntry.arguments?.getString("category") ?: "")
-//        }
-//        composable("third_screen/{itemName}") { backStackEntry ->
-//            ShukKiActivity(backStackEntry.arguments?.getString("itemName") ?: "")
-//        }
-//    }
-//}
-
 @Composable
 fun MainActivity(navController: NavController) {
-    val context = LocalContext.current // Get the context for dynamic resource lookup
+    val context = LocalContext.current
     val categories = listOf("Historic", "Parks", "Museums", "Touristic")
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item{
@@ -105,13 +64,12 @@ fun MainActivity(navController: NavController) {
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     val imageResId = context.resources.getIdentifier(
-                        category.lowercase(), // Name of the drawable file (without "R.drawable.")
-                        "drawable", // Resource type
+                        category.lowercase(),
+                        "drawable",
                         context.packageName
                     )
                     Image(
-                        //painter = painterResource(id = R.drawable.$category), // Placeholder
-                        painter = painterResource(id = imageResId), // Placeholder
+                        painter = painterResource(id = imageResId),
                         contentDescription = null,
                         modifier = Modifier.size(100.dp)
                     )

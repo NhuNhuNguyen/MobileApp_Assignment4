@@ -14,46 +14,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.navigation.NavController
 import com.google.android.gms.maps.model.LatLng
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
-//@Composable
-//fun NhuActivity(navController: NavController, category: String) {
-//    val attractions = when (category) {
-//        "Historic" -> listOf("Royal Ontario Museum", "Art Gallery of Ontario", "Casa Loma")
-//        "Parks" -> listOf("High Park", "Toronto Island", "Trinity Bellwoods")
-//        "Museums" -> listOf("Science Centre", "Aga Khan Museum", "Bata Shoe Museum")
-//        else -> listOf("CN Tower", "Ripley’s Aquarium", "Distillery District")
-//    }
-//
-//    LazyColumn(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-//        items(attractions) { attraction ->
-//            Card(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(vertical = 8.dp)
-//                    .clickable { navController.navigate("third_screen/$attraction") }
-//            ) {
-//                Text(
-//                    text = attraction,
-//                    style = MaterialTheme.typography.titleMedium,
-//                    modifier = Modifier.padding(16.dp)
-//                )
-//            }
-//        }
-//    }
-//}
 
 data class Landmark(val name: String, val address: String, val latLng: LatLng)
 
